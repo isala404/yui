@@ -1,0 +1,30 @@
+# Rust
+/target
+
+# Node/Frontend
+node_modules/
+.svelte-kit/
+/frontend/dist
+/frontend/build
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# Embedded PostgreSQL
+pg_data/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+npm-debug.log*
