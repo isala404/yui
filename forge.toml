@@ -21,8 +21,8 @@ url = "${DATABASE_URL}"
 port = 8080
 # host = "0.0.0.0"
 cors_origins = ["http://localhost:5173"]
-# enable_dashboard = true
-# dashboard_path = "/_dashboard/"
+enable_dashboard = true
+dashboard_path = "/_dashboard/"
 
 [observability]
 enabled = true

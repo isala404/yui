@@ -25,6 +25,13 @@ pg_data/
 .DS_Store
 Thumbs.db
 
+# WhatsApp session
+whatsapp.db*
+
+# Media storage
+storage/
+
 # Logs
 *.log
 npm-debug.log*
+.fastembed_cache

@@ -11,38 +11,35 @@ fn main() {
 
 fn build_frontend() {
     let frontend_dir = std::path::Path::new("frontend");
-    if !frontend_dir.exists() {
-        panic!("frontend directory not found");
-    }
+    assert!(frontend_dir.exists(), "frontend directory not found");
 
-    // Find bun or npm
-    let (pkg_mgr, install_args, build_args) = if which::which("bun").is_ok() {
-        ("bun", vec!["install"], vec!["run", "build"])
+    let pkg_mgr = if which::which("bun").is_ok() {
+        "bun"
     } else if which::which("npm").is_ok() {
-        ("npm", vec!["install"], vec!["run", "build"])
+        "npm"
     } else {
         panic!("bun or npm required to build frontend");
     };
 
-    // Install dependencies
+    run_command(
+        pkg_mgr,
+        &["install"],
+        frontend_dir,
+        "failed to install frontend dependencies",
+    );
+    run_command(
+        pkg_mgr,
+        &["run", "build"],
+        frontend_dir,
+        "failed to build frontend",
+    );
+}
+
+fn run_command(pkg_mgr: &str, args: &[&str], frontend_dir: &std::path::Path, error: &str) {
     let status = Command::new(pkg_mgr)
-        .args(&install_args)
+        .args(args)
         .current_dir(frontend_dir)
         .status()
-        .expect("failed to install frontend dependencies");
-
-    if !status.success() {
-        panic!("frontend dependency installation failed");
-    }
-
-    // Build frontend
-    let status = Command::new(pkg_mgr)
-        .args(&build_args)
-        .current_dir(frontend_dir)
-        .status()
-        .expect("failed to build frontend");
-
-    if !status.success() {
-        panic!("frontend build failed");
-    }
+        .expect(error);
+    assert!(status.success(), "{error}");
 }

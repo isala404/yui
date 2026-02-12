@@ -20,8 +20,19 @@ tracing = "0.1"
 tracing-subscriber = { version = "0.3", features = ["env-filter"] }
 dotenvy = "0.15"
 axum = "0.8"
-bcrypt = "0.17"
-jsonwebtoken = "9"
+anyhow = "1"
+base64 = "0.22"
+async-trait = "0.1"
+qr2term = "0.3"
+cron = "0.15"
+chrono-tz = "0.10"
+reqwest = { version = "0.12", features = ["json"] }
+fastembed = { path = "/Users/supiri/Projects/OSS/fastembed-rs" }
+whatsapp-rust = { path = "/Users/supiri/Projects/OSS/whatsapp-rust" }
+whatsapp-rust-tokio-transport = { path = "/Users/supiri/Projects/OSS/whatsapp-rust/transports/tokio-transport" }
+whatsapp-rust-ureq-http-client = { path = "/Users/supiri/Projects/OSS/whatsapp-rust/http_clients/ureq-client" }
+wacore = { path = "/Users/supiri/Projects/OSS/whatsapp-rust/wacore" }
+waproto = { path = "/Users/supiri/Projects/OSS/whatsapp-rust/waproto" }
 rust-embed = { version = "8", optional = true }
 mime_guess = { version = "2", optional = true }
 
